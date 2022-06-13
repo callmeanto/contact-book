@@ -10,9 +10,13 @@ class ContactsController {
         res.json(contacts);
     }
 
-    public getContact(req: Request, res: Response){
-        db.query('DESCRIBE contacts');
-        res.json('contacts');
+    public async getContact(req: Request, res: Response): Promise<any>{
+        const { id } = req.params;
+        const contacts = await pool.query('SELECT * FROM contacts WHERE id = ?', [id]);   
+        if (contacts.length > 0){
+            return res.json(contacts[0]);
+        }
+        res.status(404).json({text: "The contact does not exist"});
     }
 
     public async create(req: Request, res: Response): Promise<void>{
@@ -20,12 +24,16 @@ class ContactsController {
         res.json({message: 'Contact saved'});
     }
 
-    public delete(req: Request, res: Response){
-        res.json({text: 'Deleting a game'});
+    public async delete(req: Request, res: Response): Promise<void>{
+        const { id } = req.params;
+        await pool.query('DELETE FROM contacts WHERE id = ?', [id]);
+        res.json({message: 'Contact deleted'});
     }
 
-    public update(req: Request, res: Response){
-        res.json({text: 'Updating game' + req.params.id});
+    public async update(req: Request, res: Response): Promise<void>{
+        const { id } = req.params;
+        await pool.query('UPDATE contacts set ? WHERE id = ?', [req.body, id]);
+        res.json({text: 'Updating contact ' + req.params.id});
     }
 }
 
