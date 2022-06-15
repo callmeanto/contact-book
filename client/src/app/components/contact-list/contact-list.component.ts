@@ -4,8 +4,7 @@ import { ContactsService } from 'src/app/services/contacts.service';
 
 @Component({
   selector: 'contact-list',
-  templateUrl: './contact-list.component.html',
-  styleUrls: ['./contact-list.component.css']
+  templateUrl: './contact-list.component.html'
 })
 export class ContactListComponent implements OnInit {
 
@@ -16,7 +15,7 @@ export class ContactListComponent implements OnInit {
 
     this.contactsService.getContacts().subscribe(
       res => {
-        this.contacts = res;
+        this.contacts = ["hola","vomop", "estas"];
       },
       err => console.error(err)
     );

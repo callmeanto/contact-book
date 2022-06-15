@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { AppComponent } from "../app.component";
+import { RouterModule } from "@angular/router";
 import { ContactFormComponent } from "./contact-form/contact-form.component";
 import { ContactListComponent } from "./contact-list/contact-list.component";
 import { NavigationComponent } from "./navigation/navigation.component";
@@ -12,7 +12,8 @@ import { NavigationComponent } from "./navigation/navigation.component";
         NavigationComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        RouterModule
     ],
     exports: [
         ContactFormComponent,

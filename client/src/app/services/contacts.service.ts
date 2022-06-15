@@ -16,11 +16,11 @@ export class ContactsService {
     return this.http.get(`${this.API_URI}/contacts`);
   }
 
-  getContact(id:string){
+  getContact(id:number){
     return this.http.get(`${this.API_URI}/contacts/${id}`);
   }
 
-  deleteContact(id:string){
+  deleteContact(id:number){
     return this.http.delete(`${this.API_URI}/contacts/${id}`);
   }
 
@@ -28,7 +28,7 @@ export class ContactsService {
     return this.http.post(`${this.API_URI}/contacts`, contact);
   }
 
-  updateContact(id: string, updatedContact: Contact): Observable<any>{
+  updateContact(id: number, updatedContact: Contact): Observable<any>{
     return this.http.put(`${this.API_URI}/contacts/${id}`, updatedContact);
   }
 
