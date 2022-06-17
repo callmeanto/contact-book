@@ -1,5 +1,5 @@
 # contact-book
-A contact book REST API + SPA frontend
+A contact book REST API + SPA frontend build with MySQL, Express, Angular and NodeJS
 
 
 # How to run project
