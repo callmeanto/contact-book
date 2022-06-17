@@ -11,14 +11,33 @@ export class ContactListComponent implements OnInit {
   contacts: any = [];
   constructor(private contactsService: ContactsService) { }
 
-  ngOnInit(): void {
+  collapsed = true;
 
-    this.contactsService.getContacts().subscribe(
-      res => {
-        this.contacts = ["hola","vomop", "estas"];
-      },
-      err => console.error(err)
-    );
+  ngOnInit(): void {
+    this.getContacts();
   }
 
+  getContacts(){
+    this.contactsService.getContacts().subscribe(
+      res => {
+        this.contacts = res;
+      },
+      err => console.error(err)
+    ); 
+  }
+
+  deleteContact(id:number){
+    this.contactsService.deleteContact(id)
+    .subscribe(
+      res => {
+        console.log(res);
+        this.getContacts();
+      },
+      err => console.error(err)
+    )
+  }
+
+  collapseElement(id:string){
+    this.collapsed = !this.collapsed;
+  }
 }

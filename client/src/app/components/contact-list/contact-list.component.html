@@ -1,28 +1,31 @@
 <div class="container">
-<div class="col-md-4" *ngFor="let contact of contacts">
-    <div class="card text-center">
-        <div class="card-header">
-            {{contact}}
+<div class="col-md-10 p-2 col-sm-12" *ngFor="let contact of contacts[0]">
+    <div class="card">
+        <div class="card-header p-2">
+          <div class="container">
+            <div class="row align-items-center justify-content-between">
+              <div class="col-md-6">
+                <button class="navbar-toggler" type="button" aria-controls="navbarContent" [attr.aria-expanded]="!collapsed" (click)="collapseElement(contact.id)">
+                {{contact.first_name}} {{contact.last_name}}
+                </button>
+            
+                <div class="navbar-collapse ms-3" [class.collapse]="collapsed" id="navbarContent">
+                  <p class="m-0">Email: {{contact.email}}</p>
+                  <p>Phone: {{contact.phone}}</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-xs-3">
+                  <button class="btn btn-primary m-2" [routerLink]="['/contacts/edit', contact.id]">
+                    <i class="far fa-edit"></i>
+                  </button>
+                  <button class="btn btn-danger" (click)="deleteContact(contact.id)">
+                    <i class="far fa-trash-alt"></i>
+                  </button>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
+  </div>
 </div>
 
-<table class="table">
-    <!-- On rows -->
-<tr class="active">...</tr>
-<tr class="success">...</tr>
-<tr class="warning">...</tr>
-<tr class="danger">...</tr>
-<tr class="info">...</tr>
-
-<!-- On cells (`td` or `th`) -->
-<tr>
-  <td class="active">...</td>
-  <td class="success">...</td>
-  <td class="warning">...</td>
-  <td class="danger">...</td>
-  <td class="info">...</td>
-</tr>
-  </table>
-
-</div>

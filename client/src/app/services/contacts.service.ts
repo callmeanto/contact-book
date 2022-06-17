@@ -25,6 +25,10 @@ export class ContactsService {
   }
 
   saveContact(contact: Contact){
+    return contact.id != undefined ? this.updateContact(contact.id, contact) : this.addContact(contact);
+  }
+
+  addContact(contact: Contact){
     return this.http.post(`${this.API_URI}/contacts`, contact);
   }
 

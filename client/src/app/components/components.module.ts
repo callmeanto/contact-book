@@ -1,6 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ContactFormComponent } from "./contact-form/contact-form.component";
 import { ContactListComponent } from "./contact-list/contact-list.component";
 import { NavigationComponent } from "./navigation/navigation.component";
@@ -13,7 +15,10 @@ import { NavigationComponent } from "./navigation/navigation.component";
     ],
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        NgbModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     exports: [
         ContactFormComponent,

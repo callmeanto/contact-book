@@ -5,8 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './components/components.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     ComponentsModule,
     FormsModule,
-    RouterModule
+    ReactiveFormsModule,
+    RouterModule,
+    NgbModule
     
   ],
   providers: [],
