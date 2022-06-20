@@ -20,7 +20,7 @@ Move onto /server folder on CLI and run following commands:
 
 - `npm install` to install project dependencies, then
 - `npm run build` 
-- `npm run server`
+- `npm run dev`
 
 
 # Client
