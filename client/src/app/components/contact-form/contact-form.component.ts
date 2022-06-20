@@ -17,7 +17,7 @@ contact: Contact | null = null;
 isEditForm: Boolean = false;
 
 contactForm = new FormGroup({
-  id: new FormControl(''),
+  id: new FormControl(undefined),
   first_name: new FormControl('', Validators.required),
   last_name: new FormControl('',Validators.required),
   email: new FormControl('',Validators.required),
