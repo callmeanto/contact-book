@@ -1,7 +1,6 @@
 import {Request, Response} from 'express';
 import pool from '../database';
 
-
 class ContactsController {
 
     public async getContacts(req: Request, res: Response): Promise<void>{
@@ -15,12 +14,17 @@ class ContactsController {
         if (contacts.length > 0){
             return res.json(contacts[0]);
         }
-        res.status(404).json({text: "The contact does not exist"});
+        return res.status(404).json({message: 'The contact does not exist'});
     }
 
-    public async create(req: Request, res: Response): Promise<void>{
-        await pool.query('INSERT INTO contacts set ?',[req.body]);
-        res.json({message: 'Contact saved'});
+    public async create(req: Request, res: Response): Promise<any>{
+        try{
+            const connection = await pool.query('INSERT INTO contacts set ?',[req.body]);
+            return res.json({message: 'Contact saved'});
+        } catch (err:any) {
+            console.log(`SQL error (code: ${err.code}, message: ${err.sqlMessage}) while executing query: ${err.sql}`);
+            return res.status(500).json({ error: err.code, message: err.sqlMessage });
+      }
     }
 
     public async delete(req: Request, res: Response): Promise<void>{
