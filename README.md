@@ -4,9 +4,11 @@ A contact book REST API + SPA frontend built with MySQL, Express, Angular and No
 
 # How to run project
 - Requirements:
-- Angular 12
-- Node
+- Node and NPM
 - MySQL
+- Angular 12
+- Angular CLI
+
 
 # Server
 
@@ -19,8 +21,8 @@ Copy and paste on the mysql terminal the snippet found in `database/database.sql
 Move onto /server folder on CLI and run following commands:
 
 - `npm install` to install project dependencies, then
-- `npm run build` 
-- `npm run dev`
+- `npm run build` (this will remain running, this is to run app) 
+- And, in another CLI tab, `npm run dev` to wake up the server
 
 
 # Client
