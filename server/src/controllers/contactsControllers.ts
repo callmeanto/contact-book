@@ -23,7 +23,19 @@ class ContactsController {
             return res.json({message: 'Contact saved'});
         } catch (err:any) {
             console.log(`SQL error (code: ${err.code}, message: ${err.sqlMessage}) while executing query: ${err.sql}`);
-            return res.status(500).json({ error: err.code, message: err.sqlMessage });
+
+            let msg: string = "";
+            if(err.sqlMessage.includes("contacts.first_name")){
+                msg = "Full name has been already entered"
+            }
+            if(err.sqlMessage.includes("contacts.email")){
+                msg = "Email has been already entered"
+            }
+            if(err.sqlMessage.includes("contacts.phone")){
+                msg = "Phone number has been already entered"
+            }
+
+            return res.status(500).json({ message: msg });
       }
     }
 
